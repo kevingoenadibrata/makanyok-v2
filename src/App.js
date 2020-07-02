@@ -22,7 +22,7 @@ const App = () => {
 
       <div className="master-container">
         <Switch>
-          <Route exact path="/admin">
+          <Route path="/admin">
             <Admin />
           </Route>
           <Route path="/list/:id">
