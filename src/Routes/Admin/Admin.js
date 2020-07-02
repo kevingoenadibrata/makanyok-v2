@@ -9,12 +9,18 @@ const Admin = (props) => {
   const [author, setAuthor] = useState("");
   const {addToast} = useToasts();
 
-  const handleLoad = async (data, fileInfo) => {
+  const handleLoad = (data, fileInfo) => {
     setFile(data);
+  }
+
+  const handleClick = async () =>{
+    console.log(file);
+    console.log(city, country, author);
+
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify({city:city, country:country, author:author, data:file})
     }
     const response = await fetch('http://206.189.67.117/api/city', options);
     const resp_data = await response.json();
@@ -24,11 +30,6 @@ const Admin = (props) => {
         autoDismiss: true
       })
     }
-  }
-
-  const handleClick = () =>{
-    console.log(file);
-    console.log(city, country, author);
   }
 
   const papaparseOptions = {
