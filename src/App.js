@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
+import Sidebar from './Components/Sidebar';
+import RestaurantCard from './Components/RestaurantCard';
+import Home from './Routes/Home/Home';
+import FoodList from './Routes/FoodList/FoodList';
+import Admin from './Routes/Admin/Admin';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+      <div className="sidebar-container">
+        <Sidebar />
+      </div>
+
+      <div className="master-container">
+        <Switch>
+          <Route exact path="/admin">
+            <Admin />
+          </Route>
+          <Route path="/list/:id">
+            <FoodList />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+      </Router>
     </div>
   );
 }
