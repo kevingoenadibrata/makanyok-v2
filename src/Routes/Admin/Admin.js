@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useToast} from 'react-toast-notifications';
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 import CSVReader from 'react-csv-reader';
 
 const Admin = (props) => {
@@ -7,7 +7,7 @@ const Admin = (props) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [author, setAuthor] = useState("");
-  const {addToast} = useToast();
+  const {addToast} = useToasts();
 
   const handleLoad = async (data, fileInfo) => {
     setFile(data);
